@@ -103,7 +103,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "5be4f8c2-9c1c-4079-b24a-ecd9a46b56df"
+						"spark.autotune.trackingId": "14adb5c8-f70e-4425-a1b6-ea956d40b6f0"
 					}
 				},
 				"metadata": {
@@ -330,8 +330,8 @@
 							}
 						},
 						"source": [
-							"pesos = [1.67,1.71,1.53]\r\n",
-							"print(pesos)\r\n",
+							"altura = [1.67,1.71,1.53]\r\n",
+							"print(altura)\r\n",
 							""
 						],
 						"outputs": [],
@@ -351,13 +351,13 @@
 							}
 						},
 						"source": [
-							"pesos = [\r\n",
+							"altura = [\r\n",
 							"    [\"Silas\", 1.67],\r\n",
 							"    [\"Luiza\", 1.71],\r\n",
 							"    [\"Sophia\", 1.53],\r\n",
 							"]\r\n",
 							"\r\n",
-							"print(pesos)"
+							"print(altura)"
 						],
 						"outputs": [],
 						"execution_count": 32
@@ -376,7 +376,7 @@
 							}
 						},
 						"source": [
-							"type(pesos)"
+							"type(altura)"
 						],
 						"outputs": [],
 						"execution_count": 33
@@ -710,10 +710,123 @@
 							}
 						},
 						"source": [
-							""
+							"w = [1,2,50,6,7,8]\r\n",
+							"\r\n",
+							"print(w.reverse())"
 						],
 						"outputs": [],
 						"execution_count": null
+					},
+					{
+						"cell_type": "markdown",
+						"metadata": {
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"# Numpy"
+						]
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"import numpy as np\r\n",
+							"\r\n",
+							"#numpy array\r\n",
+							"np.altura = np.array([1.67,1.71,1.53])\r\n",
+							"np.peso = np.array([91,79,61])\r\n",
+							"\r\n",
+							"#podemos fazer cálculos com arrays do numpy, o mesmo nao seria possivel com uma lista\r\n",
+							"imc_todos = np.peso / (np.altura * np.altura)\r\n",
+							"\r\n",
+							"print(imc_todos)"
+						],
+						"outputs": [],
+						"execution_count": 8
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"print(imc_todos)\r\n",
+							"imc_todos > 30 #quem tem IMC > 30?"
+						],
+						"outputs": [],
+						"execution_count": 15
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"#outra forma de fazer o mesmo\r\n",
+							"#quem tem IMC > 30?\r\n",
+							"\r\n",
+							"imc_todos[imc_todos>30]"
+						],
+						"outputs": [],
+						"execution_count": 16
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"#diferenças entre python list e numpy array:\r\n",
+							"\r\n",
+							"lista_python = [10,20,30]\r\n",
+							"\r\n",
+							"lista_numpy = np.array([10,20,30])\r\n",
+							"\r\n",
+							"print(lista_python + lista_python)\r\n",
+							"\r\n",
+							"print(lista_numpy + lista_numpy)\r\n",
+							""
+						],
+						"outputs": [],
+						"execution_count": 13
 					}
 				]
 			},
