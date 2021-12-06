@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "f7212539-4dd3-4741-b10a-024a2a98869d"
+				"spark.autotune.trackingId": "b7ba1cc7-653e-469d-99b9-844a55928583"
 			}
 		},
 		"metadata": {
@@ -713,6 +713,184 @@
 					""
 				],
 				"execution_count": 13
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# 2D numpy array\r\n",
+					"\r\n",
+					"- |ID|Nome|Idade|\r\n",
+					"- |1|Silas|30|\r\n",
+					"- |2|Luiza|35|\r\n",
+					"- |3|Sophia|7|\r\n",
+					"\r\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"import numpy as np\r\n",
+					"\r\n",
+					"pessoas = np.array([\r\n",
+					"    ['1', 'Silas', '30'],\r\n",
+					"    ['2','Luiza', '35'],\r\n",
+					"    ['3','Sophia','7']\r\n",
+					"])\r\n",
+					"\r\n",
+					""
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"pessoas.shape #3 rows, 3 columns"
+				],
+				"execution_count": 9
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"print(pessoas[1]) # linha index 1"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"print(pessoas[1][1]) #ler só o nome do index 1"
+				],
+				"execution_count": 10
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"print(pessoas[:,1]) #ler todos os nomes"
+				],
+				"execution_count": 13
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"print(pessoas[:,2]) # ler idade "
+				],
+				"execution_count": 19
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"import numpy as np\r\n",
+					"np_mat = np.array([[1, 2],\r\n",
+					"                   [3, 4],\r\n",
+					"                   [5, 6]])\r\n",
+					"np_mat * 2\r\n",
+					""
+				],
+				"execution_count": 20
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"np_mat + np.array([10, 10])\r\n",
+					""
+				],
+				"execution_count": 21
 			}
 		]
 	}
