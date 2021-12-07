@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "b7ba1cc7-653e-469d-99b9-844a55928583"
+				"spark.autotune.trackingId": "7f1bf46e-1e3e-4ba0-ade9-8227dfed0ae3"
 			}
 		},
 		"metadata": {
@@ -64,7 +64,7 @@
 					"print(5 ** 2) \r\n",
 					""
 				],
-				"execution_count": 1
+				"execution_count": 3
 			},
 			{
 				"cell_type": "code",
@@ -378,7 +378,7 @@
 					"x = [\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",]\r\n",
 					"x[1:3] # pegar tudo entre a posição 1 e 3, incluindo a posição 1, excluindo a posição 3 (algo similar a >=1 and <3)"
 				],
-				"execution_count": 47
+				"execution_count": 4
 			},
 			{
 				"cell_type": "code",
