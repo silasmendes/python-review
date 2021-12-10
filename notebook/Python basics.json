@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "20de7733-e64a-41e2-94e1-018fc42af960"
+				"spark.autotune.trackingId": "cdb13d83-3413-4020-8348-c03d337967df"
 			}
 		},
 		"metadata": {
@@ -973,7 +973,28 @@
 					}
 				},
 				"source": [
-					""
+					"#exercitar depois:\r\n",
+					"\r\n",
+					"# Scatter plot\r\n",
+					"plt.scatter(x = gdp_cap, y = life_exp, s = np.array(pop) * 2, c = col, alpha = 0.8)\r\n",
+					"\r\n",
+					"# Previous customizations\r\n",
+					"plt.xscale('log') \r\n",
+					"plt.xlabel('GDP per Capita [in USD]')\r\n",
+					"plt.ylabel('Life Expectancy [in years]')\r\n",
+					"plt.title('World Development in 2007')\r\n",
+					"plt.xticks([1000,10000,100000], ['1k','10k','100k'])\r\n",
+					"\r\n",
+					"# Additional customizations\r\n",
+					"plt.text(1550, 71, 'India')\r\n",
+					"plt.text(5700, 80, 'China')\r\n",
+					"\r\n",
+					"# Add grid() call\r\n",
+					"\r\n",
+					"plt.grid(True)\r\n",
+					"\r\n",
+					"# Show the plot\r\n",
+					"plt.show()"
 				],
 				"execution_count": null
 			}
