@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "221fafad-fe6f-42c8-acca-db5fe5871fc6"
+				"spark.autotune.trackingId": "f058e68c-7269-46b9-ac4b-0e680991c0e8"
 			}
 		},
 		"metadata": {
@@ -1031,7 +1031,7 @@
 					"# Print europe\r\n",
 					"print(europe['france'])"
 				],
-				"execution_count": 2
+				"execution_count": 1
 			},
 			{
 				"cell_type": "code",
