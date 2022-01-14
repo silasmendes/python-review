@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "f058e68c-7269-46b9-ac4b-0e680991c0e8"
+				"spark.autotune.trackingId": "8d895b2e-1e9b-4806-b2e3-f7917570a6d5"
 			}
 		},
 		"metadata": {
@@ -1047,9 +1047,71 @@
 					}
 				},
 				"source": [
+					"#adicionar Italia e sua capital\r\n",
+					"europe['Italy'] = 'Rome'\r\n",
+					"\r\n",
+					"#Italia agora faz parte do dicionário Europe\r\n",
+					"print(europe)"
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"europe = {'spain':'madrid', 'france':'paris', 'germany':'bonn',\r\n",
+					"          'norway':'oslo', 'italy':'rome', 'poland':'warsaw',\r\n",
+					"          'australia':'vienna' }\r\n",
+					"\r\n",
+					"# a capital da Alemanha nao é Bonn. vamos atualizar para Berlin:\r\n",
+					"europe['germany'] = 'berlin'\r\n",
+					"\r\n",
+					"# Australia não faz parte do continente Europeu. Vamos remover desse dicionário:\r\n",
+					"del(europe['australia'])\r\n",
+					"\r\n",
+					"# Print europe\r\n",
+					"print(europe)"
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Dicionario de dicionario:\r\n",
+					"\r\n",
+					"europe = { 'spain': { 'capital':'madrid', 'population':46.77 },\r\n",
+					"           'france': { 'capital':'paris', 'population':66.03 },\r\n",
+					"           'germany': { 'capital':'berlin', 'population':80.62 },\r\n",
+					"           'norway': { 'capital':'oslo', 'population':5.084 } }\r\n",
+					"\r\n",
+					"# vamos extrair desse dicionário a capital da França:\r\n",
+					"\r\n",
+					"print(europe['france']['capital'])\r\n",
+					"\r\n",
 					""
 				],
-				"execution_count": null
+				"execution_count": 4
 			}
 		]
 	}
