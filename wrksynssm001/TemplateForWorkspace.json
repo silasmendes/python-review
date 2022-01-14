@@ -92,7 +92,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/Python basics')]",
+			"name": "[concat(parameters('workspaceName'), '/Pandas basic')]",
 			"type": "Microsoft.Synapse/workspaces/notebooks",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
@@ -112,7 +112,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "fdd13105-052c-4c3a-a80a-af94f6263a8d"
+						"spark.autotune.trackingId": "c6a49a78-3828-4399-8b3a-e53e0a5e359b"
 					}
 				},
 				"metadata": {
@@ -120,7 +120,7 @@
 					"enableDebugMode": false,
 					"kernelspec": {
 						"name": "synapse_pyspark",
-						"display_name": "Synapse PySpark"
+						"display_name": "python"
 					},
 					"language_info": {
 						"name": "python"
@@ -146,6 +146,68 @@
 					{
 						"cell_type": "code",
 						"metadata": {},
+						"source": [
+							"#Pandas basic"
+						],
+						"outputs": [],
+						"execution_count": null
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/Python basics')]",
+			"type": "Microsoft.Synapse/workspaces/notebooks",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"nbformat": 4,
+				"nbformat_minor": 2,
+				"bigDataPool": {
+					"referenceName": "spkssm001",
+					"type": "BigDataPoolReference"
+				},
+				"sessionProperties": {
+					"driverMemory": "28g",
+					"driverCores": 4,
+					"executorMemory": "28g",
+					"executorCores": 4,
+					"numExecutors": 2,
+					"conf": {
+						"spark.dynamicAllocation.enabled": "false",
+						"spark.dynamicAllocation.minExecutors": "2",
+						"spark.dynamicAllocation.maxExecutors": "2",
+						"spark.autotune.trackingId": "72f4f407-0b89-46e2-ad14-a5c1882bb7ca"
+					}
+				},
+				"metadata": {
+					"saveOutput": true,
+					"enableDebugMode": false,
+					"kernelspec": {
+						"name": "synapse_pyspark",
+						"display_name": "Synapse PySpark"
+					},
+					"language_info": {
+						"name": "python"
+					},
+					"a365ComputeOptions": {
+						"id": "/subscriptions/658f9f76-f34e-4696-8cb9-f8e36c139917/resourceGroups/rgsynssm001/providers/Microsoft.Synapse/workspaces/wrksynssm001/bigDataPools/spkssm001",
+						"name": "spkssm001",
+						"type": "Spark",
+						"endpoint": "https://wrksynssm001.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/spkssm001",
+						"auth": {
+							"type": "AAD",
+							"authResource": "https://dev.azuresynapse.net"
+						},
+						"sparkVersion": "3.1",
+						"nodeCount": 3,
+						"cores": 4,
+						"memory": 28
+					}
+				},
+				"cells": [
+					{
+						"cell_type": "code",
 						"source": [
 							"# Cálculos com Python\r\n",
 							"print(5 + 10)\r\n",
