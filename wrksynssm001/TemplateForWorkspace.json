@@ -21,6 +21,15 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('workspaceName'), '/spkssm001')]",
+			"type": "Microsoft.Synapse/workspaces/bigDataPools",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/wrksynssm001-WorkspaceDefaultSqlServer')]",
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
@@ -103,7 +112,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "97937bfa-f05c-4c68-ae51-dcc3f544b0ad"
+						"spark.autotune.trackingId": "fdd13105-052c-4c3a-a80a-af94f6263a8d"
 					}
 				},
 				"metadata": {
@@ -1081,7 +1090,7 @@
 							""
 						],
 						"outputs": [],
-						"execution_count": 7
+						"execution_count": 1
 					},
 					{
 						"cell_type": "code",
@@ -1097,10 +1106,150 @@
 							}
 						},
 						"source": [
-							""
+							"#exercitar depois:\r\n",
+							"\r\n",
+							"# Scatter plot\r\n",
+							"plt.scatter(x = gdp_cap, y = life_exp, s = np.array(pop) * 2, c = col, alpha = 0.8)\r\n",
+							"\r\n",
+							"# Previous customizations\r\n",
+							"plt.xscale('log') \r\n",
+							"plt.xlabel('GDP per Capita [in USD]')\r\n",
+							"plt.ylabel('Life Expectancy [in years]')\r\n",
+							"plt.title('World Development in 2007')\r\n",
+							"plt.xticks([1000,10000,100000], ['1k','10k','100k'])\r\n",
+							"\r\n",
+							"# Additional customizations\r\n",
+							"plt.text(1550, 71, 'India')\r\n",
+							"plt.text(5700, 80, 'China')\r\n",
+							"\r\n",
+							"# Add grid() call\r\n",
+							"\r\n",
+							"plt.grid(True)\r\n",
+							"\r\n",
+							"# Show the plot\r\n",
+							"plt.show()"
 						],
 						"outputs": [],
 						"execution_count": null
+					},
+					{
+						"cell_type": "markdown",
+						"metadata": {
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"# Dictionary"
+						]
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"# create dictionary europe:\r\n",
+							"europe = { 'spain':'madrid', 'france':'paris', 'germany':'berlin', 'norway':'oslo' }\r\n",
+							"\r\n",
+							"# Print europe\r\n",
+							"print(europe['france'])"
+						],
+						"outputs": [],
+						"execution_count": 1
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"#adicionar Italia e sua capital\r\n",
+							"europe['Italy'] = 'Rome'\r\n",
+							"\r\n",
+							"#Italia agora faz parte do dicionário Europe\r\n",
+							"print(europe)"
+						],
+						"outputs": [],
+						"execution_count": 2
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"europe = {'spain':'madrid', 'france':'paris', 'germany':'bonn',\r\n",
+							"          'norway':'oslo', 'italy':'rome', 'poland':'warsaw',\r\n",
+							"          'australia':'vienna' }\r\n",
+							"\r\n",
+							"# a capital da Alemanha nao é Bonn. vamos atualizar para Berlin:\r\n",
+							"europe['germany'] = 'berlin'\r\n",
+							"\r\n",
+							"# Australia não faz parte do continente Europeu. Vamos remover desse dicionário:\r\n",
+							"del(europe['australia'])\r\n",
+							"\r\n",
+							"# Print europe\r\n",
+							"print(europe)"
+						],
+						"outputs": [],
+						"execution_count": 3
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"# Dicionario de dicionario:\r\n",
+							"\r\n",
+							"europe = { 'spain': { 'capital':'madrid', 'population':46.77 },\r\n",
+							"           'france': { 'capital':'paris', 'population':66.03 },\r\n",
+							"           'germany': { 'capital':'berlin', 'population':80.62 },\r\n",
+							"           'norway': { 'capital':'oslo', 'population':5.084 } }\r\n",
+							"\r\n",
+							"# vamos extrair desse dicionário a capital da França:\r\n",
+							"\r\n",
+							"print(europe['france']['capital'])\r\n",
+							"\r\n",
+							""
+						],
+						"outputs": [],
+						"execution_count": 4
 					}
 				]
 			},
