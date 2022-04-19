@@ -1,0 +1,139 @@
+{
+	"name": "Parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "wrksynssm001-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "FactInternetSales.parquet",
+				"fileSystem": "default"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "ProductKey",
+				"type": "INT32"
+			},
+			{
+				"name": "OrderDateKey",
+				"type": "INT32"
+			},
+			{
+				"name": "DueDateKey",
+				"type": "INT32"
+			},
+			{
+				"name": "ShipDateKey",
+				"type": "INT32"
+			},
+			{
+				"name": "CustomerKey",
+				"type": "INT32"
+			},
+			{
+				"name": "PromotionKey",
+				"type": "INT32"
+			},
+			{
+				"name": "CurrencyKey",
+				"type": "INT32"
+			},
+			{
+				"name": "SalesTerritoryKey",
+				"type": "INT32"
+			},
+			{
+				"name": "SalesOrderNumber",
+				"type": "UTF8"
+			},
+			{
+				"name": "SalesOrderLineNumber",
+				"type": "INT32"
+			},
+			{
+				"name": "RevisionNumber",
+				"type": "INT32"
+			},
+			{
+				"name": "OrderQuantity",
+				"type": "INT32"
+			},
+			{
+				"name": "UnitPrice",
+				"type": "DECIMAL",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "ExtendedAmount",
+				"type": "DECIMAL",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "UnitPriceDiscountPct",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "DiscountAmount",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "ProductStandardCost",
+				"type": "DECIMAL",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "TotalProductCost",
+				"type": "DECIMAL",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "SalesAmount",
+				"type": "DECIMAL",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "TaxAmt",
+				"type": "DECIMAL",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "Freight",
+				"type": "DECIMAL",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "CarrierTrackingNumber",
+				"type": "UTF8"
+			},
+			{
+				"name": "CustomerPONumber",
+				"type": "UTF8"
+			},
+			{
+				"name": "OrderDate",
+				"type": "INT96"
+			},
+			{
+				"name": "DueDate",
+				"type": "INT96"
+			},
+			{
+				"name": "ShipDate",
+				"type": "INT96"
+			}
+		]
+	}
+}
