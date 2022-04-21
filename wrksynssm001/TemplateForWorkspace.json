@@ -458,7 +458,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('workspaceName'), '/Pandas basic')]",
+			"name": "[concat(parameters('workspaceName'), '/Pandas basicahuhauauuahuha')]",
 			"type": "Microsoft.Synapse/workspaces/notebooks",
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
@@ -478,7 +478,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "90e511cf-6375-4795-9bf9-8d681bf9423c"
+						"spark.autotune.trackingId": "bcf30299-9171-40d3-b70f-8c06eb24ee68"
 					}
 				},
 				"metadata": {
