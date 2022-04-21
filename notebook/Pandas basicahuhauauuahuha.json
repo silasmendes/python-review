@@ -1,5 +1,5 @@
 {
-	"name": "Pandas basic",
+	"name": "Pandas basicahuhauauuahuha",
 	"properties": {
 		"nbformat": 4,
 		"nbformat_minor": 2,
@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "c6a49a78-3828-4399-8b3a-e53e0a5e359b"
+				"spark.autotune.trackingId": "a590c068-0168-4036-89b3-89011eac1f4f"
 			}
 		},
 		"metadata": {
@@ -43,7 +43,7 @@
 				"nodeCount": 3,
 				"cores": 4,
 				"memory": 28,
-				"extraHeader": null
+				"automaticScaleJobs": false
 			},
 			"sessionKeepAliveTimeout": 30
 		},
@@ -53,7 +53,6 @@
 				"source": [
 					"#Pandas basic"
 				],
-				"attachments": null,
 				"execution_count": null
 			}
 		]
