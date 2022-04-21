@@ -1,5 +1,5 @@
 {
-	"name": "Pandas basic 01",
+	"name": "Pandas basic 02",
 	"properties": {
 		"nbformat": 4,
 		"nbformat_minor": 2,
@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "e3b290b1-d667-4b13-99cf-9efab2e0d33c"
+				"spark.autotune.trackingId": "1854b553-29e0-4eaf-a6c0-cccfa72d92f7"
 			}
 		},
 		"metadata": {
