@@ -43,9 +43,8 @@
 				"nodeCount": 3,
 				"cores": 4,
 				"memory": 28,
-				"automaticScaleJobs": false
-			},
-			"sessionKeepAliveTimeout": 30
+				"extraHeader": null
+			}
 		},
 		"cells": [
 			{
@@ -64,6 +63,7 @@
 					"print(5 ** 2) \r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 3
 			},
 			{
@@ -89,6 +89,7 @@
 					"comando1\r\n",
 					"comando2"
 				],
+				"attachments": null,
 				"execution_count": null
 			},
 			{
@@ -102,7 +103,8 @@
 				},
 				"source": [
 					"# Variables"
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -125,6 +127,7 @@
 					"\r\n",
 					"print (imc)"
 				],
+				"attachments": null,
 				"execution_count": 26
 			},
 			{
@@ -146,6 +149,7 @@
 					"type(imc)\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 27
 			},
 			{
@@ -165,6 +169,7 @@
 					"## qual o tipo da variavel peso?\r\n",
 					"type(peso)"
 				],
+				"attachments": null,
 				"execution_count": 28
 			},
 			{
@@ -186,6 +191,7 @@
 					"print(\"Seu IMC é \" + imc)\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 29
 			},
 			{
@@ -207,6 +213,7 @@
 					"print(\"Seu IMC é \" + str(imc))\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 30
 			},
 			{
@@ -220,7 +227,8 @@
 				},
 				"source": [
 					"Listas"
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -240,6 +248,7 @@
 					"print(altura)\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 31
 			},
 			{
@@ -264,6 +273,7 @@
 					"\r\n",
 					"print(altura)"
 				],
+				"attachments": null,
 				"execution_count": 32
 			},
 			{
@@ -282,6 +292,7 @@
 				"source": [
 					"type(altura)"
 				],
+				"attachments": null,
 				"execution_count": 33
 			},
 			{
@@ -302,6 +313,7 @@
 					"x[1] # b\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 41
 			},
 			{
@@ -320,6 +332,7 @@
 				"source": [
 					"x[-3] # b"
 				],
+				"attachments": null,
 				"execution_count": 43
 			},
 			{
@@ -340,6 +353,7 @@
 					"\r\n",
 					"print(x[1] + x[3])"
 				],
+				"attachments": null,
 				"execution_count": 44
 			},
 			{
@@ -359,7 +373,8 @@
 					"The start index will be included, while the end index is not.\r\n",
 					"\r\n",
 					""
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -378,6 +393,7 @@
 					"x = [\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",]\r\n",
 					"x[1:3] # pegar tudo entre a posição 1 e 3, incluindo a posição 1, excluindo a posição 3 (algo similar a >=1 and <3)"
 				],
+				"attachments": null,
 				"execution_count": 4
 			},
 			{
@@ -397,6 +413,7 @@
 					"x[2:] #pegar tudo a partir da posição 2 \r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 48
 			},
 			{
@@ -410,7 +427,8 @@
 				},
 				"source": [
 					"# **Manipulando listas**"
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -432,6 +450,7 @@
 					"\r\n",
 					"print(y)"
 				],
+				"attachments": null,
 				"execution_count": 49
 			},
 			{
@@ -455,6 +474,7 @@
 					"print(y)\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 50
 			},
 			{
@@ -468,7 +488,8 @@
 				},
 				"source": [
 					"# Funções"
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -488,6 +509,7 @@
 					"\r\n",
 					"print(max(w))"
 				],
+				"attachments": null,
 				"execution_count": 2
 			},
 			{
@@ -506,6 +528,7 @@
 				"source": [
 					"print(len(w))"
 				],
+				"attachments": null,
 				"execution_count": 3
 			},
 			{
@@ -525,6 +548,7 @@
 					"# precisa de ajuda com os comandos? use o help para acessar documentação:\r\n",
 					"help(max)"
 				],
+				"attachments": null,
 				"execution_count": 4
 			},
 			{
@@ -546,6 +570,7 @@
 					"w_sorted = sorted(w1, key=None, reverse=True)\r\n",
 					"print(w_sorted)"
 				],
+				"attachments": null,
 				"execution_count": 10
 			},
 			{
@@ -559,7 +584,8 @@
 				},
 				"source": [
 					"# Métodos"
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -585,6 +611,7 @@
 					"\r\n",
 					"print(nome_primeira_maiuscula)"
 				],
+				"attachments": null,
 				"execution_count": 14
 			},
 			{
@@ -605,6 +632,7 @@
 					"\r\n",
 					"print(w.reverse())"
 				],
+				"attachments": null,
 				"execution_count": null
 			},
 			{
@@ -618,7 +646,8 @@
 				},
 				"source": [
 					"# Numpy"
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -645,6 +674,7 @@
 					"\r\n",
 					"print(imc_todos)"
 				],
+				"attachments": null,
 				"execution_count": 8
 			},
 			{
@@ -664,6 +694,7 @@
 					"print(imc_todos)\r\n",
 					"imc_todos > 30 #quem tem IMC > 30?"
 				],
+				"attachments": null,
 				"execution_count": 15
 			},
 			{
@@ -685,6 +716,7 @@
 					"\r\n",
 					"imc_todos[imc_todos>30]"
 				],
+				"attachments": null,
 				"execution_count": 16
 			},
 			{
@@ -712,6 +744,7 @@
 					"print(lista_numpy + lista_numpy)\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 13
 			},
 			{
@@ -732,7 +765,8 @@
 					"- |3|Sophia|7|\r\n",
 					"\r\n",
 					""
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -758,6 +792,7 @@
 					"\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 3
 			},
 			{
@@ -776,6 +811,7 @@
 				"source": [
 					"pessoas.shape #3 rows, 3 columns"
 				],
+				"attachments": null,
 				"execution_count": 9
 			},
 			{
@@ -794,6 +830,7 @@
 				"source": [
 					"print(pessoas[1]) # linha index 1"
 				],
+				"attachments": null,
 				"execution_count": 5
 			},
 			{
@@ -812,6 +849,7 @@
 				"source": [
 					"print(pessoas[1][1]) #ler só o nome do index 1"
 				],
+				"attachments": null,
 				"execution_count": 10
 			},
 			{
@@ -830,6 +868,7 @@
 				"source": [
 					"print(pessoas[:,1]) #ler todos os nomes"
 				],
+				"attachments": null,
 				"execution_count": 13
 			},
 			{
@@ -848,6 +887,7 @@
 				"source": [
 					"print(pessoas[:,2]) # ler idade "
 				],
+				"attachments": null,
 				"execution_count": 19
 			},
 			{
@@ -871,6 +911,7 @@
 					"np_mat * 2\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 1
 			},
 			{
@@ -890,6 +931,7 @@
 					"np_mat + np.array([10, 10])\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 21
 			},
 			{
@@ -903,7 +945,8 @@
 				},
 				"source": [
 					"# Matplotlib"
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -923,6 +966,7 @@
 					"plt.plot(x,y)\r\n",
 					"plt.show()"
 				],
+				"attachments": null,
 				"execution_count": null
 			},
 			{
@@ -957,6 +1001,7 @@
 					"plt.show()\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 1
 			},
 			{
@@ -996,6 +1041,7 @@
 					"# Show the plot\r\n",
 					"plt.show()"
 				],
+				"attachments": null,
 				"execution_count": null
 			},
 			{
@@ -1009,7 +1055,8 @@
 				},
 				"source": [
 					"# Dictionary"
-				]
+				],
+				"attachments": null
 			},
 			{
 				"cell_type": "code",
@@ -1031,6 +1078,7 @@
 					"# Print europe\r\n",
 					"print(europe['france'])"
 				],
+				"attachments": null,
 				"execution_count": 1
 			},
 			{
@@ -1053,6 +1101,7 @@
 					"#Italia agora faz parte do dicionário Europe\r\n",
 					"print(europe)"
 				],
+				"attachments": null,
 				"execution_count": 2
 			},
 			{
@@ -1082,6 +1131,7 @@
 					"# Print europe\r\n",
 					"print(europe)"
 				],
+				"attachments": null,
 				"execution_count": 3
 			},
 			{
@@ -1111,6 +1161,7 @@
 					"\r\n",
 					""
 				],
+				"attachments": null,
 				"execution_count": 4
 			}
 		]
