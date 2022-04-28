@@ -1,0 +1,17 @@
+{
+	"name": "Lucca DFS repro issue",
+	"properties": {
+		"content": {
+			"query": "-- Storage account I'm using to repro: https://templuccarepro.blob.core.windows.net/xxyyzz/files/FactInternetSales.parquet\n\nCREATE DATABASE repro\nGO\n\n\nUSE repro\nGO\n\n--Using AAD and blob endpoint. fasthack is configured as \"Container\", it allows anonymous access and this works properly\nSELECT TOP 10 * FROM OPENROWSET(BULK 'https://templuccarepro.blob.core.windows.net/xxyyzz/files/', FORMAT = 'PARQUET') A\nGO\n\n-- Using AAD and dfs endpoint. This fails with: \"Content of directory on path 'https://templuccarepro.dfs.core.windows.net/xxyyzz/files/' cannot be listed.\"\nSELECT TOP 10 * FROM OPENROWSET(BULK 'https://templuccarepro.dfs.core.windows.net/xxyyzz/files/', FORMAT = 'PARQUET') A\nGO\n\n\n\n-- Test 2: Using External Data Source and MSI\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Pa$$w0rd1!@'\nGO\n\n\n-- Managed Identity doesn't have permission on https://datalake1lf.dfs.core.windows.net/fasthack but this container allows anonymous access\nCREATE DATABASE SCOPED CREDENTIAL [MSIToken]\nWITH IDENTITY = 'Managed Identity'\nGO\n\n-- DROP EXTERNAL DATA SOURCE [blob]\nCREATE EXTERNAL DATA SOURCE [blob]\nWITH (    LOCATION   = 'https://templuccarepro.blob.core.windows.net/xxyyzz/',\n          CREDENTIAL = [MSIToken]\n)\nGO\n\n-- DROP  EXTERNAL DATA SOURCE [dfs]\nCREATE EXTERNAL DATA SOURCE [dfs]\nWITH (    LOCATION   = 'https://templuccarepro.dfs.core.windows.net/xxyyzz/',\n          CREDENTIAL = [MSIToken]\n)\nGO\n\n\n-- This fails\nSELECT TOP 10 * FROM OPENROWSET(BULK 'files/', \n                DATA_SOURCE = 'blob',\n                FORMAT = 'PARQUET') as a\nGO\n\n\n-- This fails\nSELECT TOP 10 * FROM OPENROWSET(BULK 'files/', \n                DATA_SOURCE = 'dfs',\n                FORMAT = 'PARQUET') as a\nGO\n\n\n-- Test 3: Using External Data Source without specific credentials\n\n-- when defining the external data source with no credentials\n-- drop EXTERNAL DATA SOURCE [dfs_NoCred]\nCREATE EXTERNAL DATA SOURCE [dfs_NoCred]\nWITH (    LOCATION   = 'https://templuccarepro.dfs.core.windows.net/xxyyzz/')\nGO\n\n-- drop EXTERNAL DATA SOURCE [blob_NoCred]\nCREATE EXTERNAL DATA SOURCE [blob_NoCred]\nWITH (    LOCATION   = 'https://templuccarepro.blob.core.windows.net/xxyyzz/')\nGO\n\n\n-- This works\nSELECT TOP 10 * FROM OPENROWSET(BULK 'files/', \n                DATA_SOURCE = 'blob_NoCred',\n                FORMAT = 'PARQUET') as a\nGO\n\n\n-- this fails\nSELECT TOP 10 * FROM OPENROWSET(BULK 'files/', \n                DATA_SOURCE = 'dfs_NoCred',\n                FORMAT = 'PARQUET') as a\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "repro",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
