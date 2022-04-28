@@ -458,6 +458,26 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/Lucca DFS repro issue')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "-- Storage account I'm using to repro: https://templuccarepro.blob.core.windows.net/xxyyzz/files/FactInternetSales.parquet\n\nCREATE DATABASE repro\nGO\n\n\nUSE repro\nGO\n\n--Using AAD and blob endpoint. fasthack is configured as \"Container\", it allows anonymous access and this works properly\nSELECT TOP 10 * FROM OPENROWSET(BULK 'https://templuccarepro.blob.core.windows.net/xxyyzz/files/', FORMAT = 'PARQUET') A\nGO\n\n-- Using AAD and dfs endpoint. This fails with: \"Content of directory on path 'https://templuccarepro.dfs.core.windows.net/xxyyzz/files/' cannot be listed.\"\nSELECT TOP 10 * FROM OPENROWSET(BULK 'https://templuccarepro.dfs.core.windows.net/xxyyzz/files/', FORMAT = 'PARQUET') A\nGO\n\n\n\n-- Test 2: Using External Data Source and MSI\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Pa$$w0rd1!@'\nGO\n\n\n-- Managed Identity doesn't have permission on https://datalake1lf.dfs.core.windows.net/fasthack but this container allows anonymous access\nCREATE DATABASE SCOPED CREDENTIAL [MSIToken]\nWITH IDENTITY = 'Managed Identity'\nGO\n\n-- DROP EXTERNAL DATA SOURCE [blob]\nCREATE EXTERNAL DATA SOURCE [blob]\nWITH (    LOCATION   = 'https://templuccarepro.blob.core.windows.net/xxyyzz/',\n          CREDENTIAL = [MSIToken]\n)\nGO\n\n-- DROP  EXTERNAL DATA SOURCE [dfs]\nCREATE EXTERNAL DATA SOURCE [dfs]\nWITH (    LOCATION   = 'https://templuccarepro.dfs.core.windows.net/xxyyzz/',\n          CREDENTIAL = [MSIToken]\n)\nGO\n\n\n-- This fails\nSELECT TOP 10 * FROM OPENROWSET(BULK 'files/', \n                DATA_SOURCE = 'blob',\n                FORMAT = 'PARQUET') as a\nGO\n\n\n-- This fails\nSELECT TOP 10 * FROM OPENROWSET(BULK 'files/', \n                DATA_SOURCE = 'dfs',\n                FORMAT = 'PARQUET') as a\nGO\n\n\n-- Test 3: Using External Data Source without specific credentials\n\n-- when defining the external data source with no credentials\n-- drop EXTERNAL DATA SOURCE [dfs_NoCred]\nCREATE EXTERNAL DATA SOURCE [dfs_NoCred]\nWITH (    LOCATION   = 'https://templuccarepro.dfs.core.windows.net/xxyyzz/')\nGO\n\n-- drop EXTERNAL DATA SOURCE [blob_NoCred]\nCREATE EXTERNAL DATA SOURCE [blob_NoCred]\nWITH (    LOCATION   = 'https://templuccarepro.blob.core.windows.net/xxyyzz/')\nGO\n\n\n-- This works\nSELECT TOP 10 * FROM OPENROWSET(BULK 'files/', \n                DATA_SOURCE = 'blob_NoCred',\n                FORMAT = 'PARQUET') as a\nGO\n\n\n-- this fails\nSELECT TOP 10 * FROM OPENROWSET(BULK 'files/', \n                DATA_SOURCE = 'dfs_NoCred',\n                FORMAT = 'PARQUET') as a\nGO\n",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "repro",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/Python basics')]",
 			"type": "Microsoft.Synapse/workspaces/notebooks",
 			"apiVersion": "2019-06-01-preview",
@@ -478,7 +498,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "d518125d-4b33-4b16-8915-c38a6f81f11d"
+						"spark.autotune.trackingId": "72f4f407-0b89-46e2-ad14-a5c1882bb7ca"
 					}
 				},
 				"metadata": {
@@ -504,14 +524,12 @@
 						"nodeCount": 3,
 						"cores": 4,
 						"memory": 28,
-						"automaticScaleJobs": false
-					},
-					"sessionKeepAliveTimeout": 30
+						"extraHeader": null
+					}
 				},
 				"cells": [
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"# Cálculos com Python\r\n",
 							"print(5 + 10)\r\n",
@@ -526,6 +544,7 @@
 							"print(5 ** 2) \r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 3
 					},
@@ -552,6 +571,7 @@
 							"comando1\r\n",
 							"comando2"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": null
 					},
@@ -566,7 +586,8 @@
 						},
 						"source": [
 							"# Variables"
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -589,6 +610,7 @@
 							"\r\n",
 							"print (imc)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 26
 					},
@@ -611,6 +633,7 @@
 							"type(imc)\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 27
 					},
@@ -631,6 +654,7 @@
 							"## qual o tipo da variavel peso?\r\n",
 							"type(peso)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 28
 					},
@@ -653,6 +677,7 @@
 							"print(\"Seu IMC é \" + imc)\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 29
 					},
@@ -675,6 +700,7 @@
 							"print(\"Seu IMC é \" + str(imc))\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 30
 					},
@@ -689,7 +715,8 @@
 						},
 						"source": [
 							"Listas"
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -709,6 +736,7 @@
 							"print(altura)\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 31
 					},
@@ -734,6 +762,7 @@
 							"\r\n",
 							"print(altura)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 32
 					},
@@ -753,6 +782,7 @@
 						"source": [
 							"type(altura)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 33
 					},
@@ -774,6 +804,7 @@
 							"x[1] # b\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 41
 					},
@@ -793,6 +824,7 @@
 						"source": [
 							"x[-3] # b"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 43
 					},
@@ -814,6 +846,7 @@
 							"\r\n",
 							"print(x[1] + x[3])"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 44
 					},
@@ -834,7 +867,8 @@
 							"The start index will be included, while the end index is not.\r\n",
 							"\r\n",
 							""
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -853,6 +887,7 @@
 							"x = [\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",]\r\n",
 							"x[1:3] # pegar tudo entre a posição 1 e 3, incluindo a posição 1, excluindo a posição 3 (algo similar a >=1 and <3)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 4
 					},
@@ -873,6 +908,7 @@
 							"x[2:] #pegar tudo a partir da posição 2 \r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 48
 					},
@@ -887,7 +923,8 @@
 						},
 						"source": [
 							"# **Manipulando listas**"
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -909,6 +946,7 @@
 							"\r\n",
 							"print(y)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 49
 					},
@@ -933,6 +971,7 @@
 							"print(y)\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 50
 					},
@@ -947,7 +986,8 @@
 						},
 						"source": [
 							"# Funções"
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -967,6 +1007,7 @@
 							"\r\n",
 							"print(max(w))"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 2
 					},
@@ -986,6 +1027,7 @@
 						"source": [
 							"print(len(w))"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 3
 					},
@@ -1006,6 +1048,7 @@
 							"# precisa de ajuda com os comandos? use o help para acessar documentação:\r\n",
 							"help(max)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 4
 					},
@@ -1028,6 +1071,7 @@
 							"w_sorted = sorted(w1, key=None, reverse=True)\r\n",
 							"print(w_sorted)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 10
 					},
@@ -1042,7 +1086,8 @@
 						},
 						"source": [
 							"# Métodos"
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -1068,6 +1113,7 @@
 							"\r\n",
 							"print(nome_primeira_maiuscula)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 14
 					},
@@ -1089,6 +1135,7 @@
 							"\r\n",
 							"print(w.reverse())"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": null
 					},
@@ -1103,7 +1150,8 @@
 						},
 						"source": [
 							"# Numpy"
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -1130,6 +1178,7 @@
 							"\r\n",
 							"print(imc_todos)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 8
 					},
@@ -1150,6 +1199,7 @@
 							"print(imc_todos)\r\n",
 							"imc_todos > 30 #quem tem IMC > 30?"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 15
 					},
@@ -1172,6 +1222,7 @@
 							"\r\n",
 							"imc_todos[imc_todos>30]"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 16
 					},
@@ -1200,6 +1251,7 @@
 							"print(lista_numpy + lista_numpy)\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 13
 					},
@@ -1221,7 +1273,8 @@
 							"- |3|Sophia|7|\r\n",
 							"\r\n",
 							""
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -1247,6 +1300,7 @@
 							"\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 3
 					},
@@ -1266,6 +1320,7 @@
 						"source": [
 							"pessoas.shape #3 rows, 3 columns"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 9
 					},
@@ -1285,6 +1340,7 @@
 						"source": [
 							"print(pessoas[1]) # linha index 1"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 5
 					},
@@ -1304,6 +1360,7 @@
 						"source": [
 							"print(pessoas[1][1]) #ler só o nome do index 1"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 10
 					},
@@ -1323,6 +1380,7 @@
 						"source": [
 							"print(pessoas[:,1]) #ler todos os nomes"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 13
 					},
@@ -1342,6 +1400,7 @@
 						"source": [
 							"print(pessoas[:,2]) # ler idade "
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 19
 					},
@@ -1366,6 +1425,7 @@
 							"np_mat * 2\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 1
 					},
@@ -1386,6 +1446,7 @@
 							"np_mat + np.array([10, 10])\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 21
 					},
@@ -1400,7 +1461,8 @@
 						},
 						"source": [
 							"# Matplotlib"
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -1420,6 +1482,7 @@
 							"plt.plot(x,y)\r\n",
 							"plt.show()"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": null
 					},
@@ -1455,6 +1518,7 @@
 							"plt.show()\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 1
 					},
@@ -1495,6 +1559,7 @@
 							"# Show the plot\r\n",
 							"plt.show()"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": null
 					},
@@ -1509,7 +1574,8 @@
 						},
 						"source": [
 							"# Dictionary"
-						]
+						],
+						"attachments": null
 					},
 					{
 						"cell_type": "code",
@@ -1531,6 +1597,7 @@
 							"# Print europe\r\n",
 							"print(europe['france'])"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 1
 					},
@@ -1554,6 +1621,7 @@
 							"#Italia agora faz parte do dicionário Europe\r\n",
 							"print(europe)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 2
 					},
@@ -1584,6 +1652,7 @@
 							"# Print europe\r\n",
 							"print(europe)"
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 3
 					},
@@ -1614,6 +1683,7 @@
 							"\r\n",
 							""
 						],
+						"attachments": null,
 						"outputs": [],
 						"execution_count": 4
 					}
